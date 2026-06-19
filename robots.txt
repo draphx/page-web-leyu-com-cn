@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://draphx.github.io/page-web-leyu-com-cn/sitemap.xml
