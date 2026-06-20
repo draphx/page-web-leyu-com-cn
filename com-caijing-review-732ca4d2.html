@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩经网 · 资料索引平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #fde9d8 0%, #f7d6b0 40%, #f2c39a 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .wrapper {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 36px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px rgba(150, 90, 40, 0.15);
+    }
+
+    .header-tag {
+      display: inline-block;
+      background: #c97a4e;
+      color: #fff9f0;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #4a2e1a;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #7b5f47;
+      border-left: 4px solid #c97a4e;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .intro-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .intro-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      flex: 1 1 260px;
+      box-shadow: 0 8px 18px rgba(100, 60, 25, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(130, 70, 30, 0.10);
+    }
+
+    .intro-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #3d2a19;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .intro-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4d3a28;
+    }
+
+    .directory-section {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 8px 20px rgba(110, 60, 20, 0.06);
+    }
+
+    .directory-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #3d2a19;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dir-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.8rem 1.5rem;
+      list-style: none;
+    }
+
+    .dir-list li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #4b3522;
+    }
+
+    .dir-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.1rem;
+      color: #b87a4e;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .dir-list li strong {
+      font-weight: 600;
+      color: #2c1d10;
+    }
+
+    .notice-area {
+      background: white;
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid #d58e5c;
+      box-shadow: 0 6px 14px rgba(100, 55, 20, 0.05);
+    }
+
+    .notice-area h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4a2e1a;
+      margin-bottom: 0.4rem;
+    }
+
+    .notice-area p {
+      font-size: 0.9rem;
+      color: #5a3e2a;
+      line-height: 1.7;
+    }
+
+    .faq-preview {
+      background: white;
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-preview h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4a2e1a;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #3d2a19;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #5a412d;
+      line-height: 1.6;
+      padding-left: 0.2rem;
+    }
+
+    .related-links {
+      background: white;
+      border-radius: 24px;
+      padding: 1.3rem 1.8rem 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .related-links h5 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #3d2a19;
+      margin-bottom: 0.6rem;
+    }
+
+    .related-links ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .related-links ul li {
+      font-size: 0.9rem;
+      color: #6a4e36;
+    }
+
+    .related-links ul li a {
+      color: #7a4f2e;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .related-links ul li a:hover {
+      border-bottom-color: #b87a4e;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #7a634d;
+      font-size: 0.85rem;
+      border-top: 1px solid #e5d1be;
+      padding-top: 1.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .inline-link {
+      color: #935e34;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dashed #b87a4e;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #683f1f;
+      border-bottom-style: solid;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        padding: 1.8rem 1rem;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .intro-card {
+        padding: 1.2rem 1.2rem;
+      }
+      .dir-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 420px) {
+      .dir-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header-tag">📚 资料索引 · 知识库入口</div>
+    <h1>彩经网 · 信息整理站</h1>
+    <div class="subhead">从资料汇编的角度，提供结构化的内容检索路径</div>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>🗂️ 分类整理</h3>
+        <p>按主题、类型、时间对公开信息进行归纳，方便你快速定位感兴趣的内容版块。</p>
+      </div>
+      <div class="intro-card">
+        <h3>🔍 索引逻辑</h3>
+        <p>围绕常用关键词建立条目式导航，减少层层跳转的冗余，让资料查找更直接。</p>
+      </div>
+      <div class="intro-card">
+        <h3>📌 持续更新</h3>
+        <p>内容素材会随公开资料变化而定期补充，保持索引目录的有效性和覆盖面。</p>
+      </div>
+    </div>
+
+    <div class="directory-section">
+      <h2>📂 常用目录一览</h2>
+      <ul class="dir-list">
+        <li><strong>趋势笔记</strong> — 历史数据与周期归纳</li>
+        <li><strong>术语手册</strong> — 常见词汇与概念说明</li>
+        <li><strong>方法简述</strong> — 不同思路的步骤摘要</li>
+        <li><strong>案例收录</strong> — 典型场景与复盘记录</li>
+        <li><strong>工具清单</strong> — 图表、统计、辅助资源</li>
+        <li><strong>问答归档</strong> — 用户常见疑问与简要回应</li>
+      </ul>
+    </div>
+
+    <div class="notice-area">
+      <h4>💡 使用提示</h4>
+      <p>本站定位为信息索引与资料整理，所有内容均来自公开可查的素材。你可以根据目录结构按需浏览，也可以直接搜索关键词查找条目。如果你在资料查找过程中遇到模糊或不准确的地方，欢迎通过页面底部的反馈渠道提出，我们会根据实际情况调整或补充相关内容。</p>
+    </div>
+
+    <div class="faq-preview">
+      <h4>❓ 常见问题（摘要）</h4>
+      <div class="faq-item">
+        <span class="q">Q：这里的资料和官方平台有什么区别？</span>
+        <span class="a">A：本页主要从整理和索引角度出发，汇集公开内容并做结构化呈现，不代替任何官方渠道。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">Q：信息更新频率是怎样的？</span>
+        <span class="a">A：根据公开内容的变化节奏，一般每月会做一次整体复查，重要条目会随时补充。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">Q：能否转载或引用这里的资料？</span>
+        <span class="a">A：目录中的原始素材均来自公开来源，引用时建议核对原出处，并遵守相关授权要求。</span>
+      </div>
+    </div>
+
+    <div class="related-links">
+      <h5>🔗 相关信息</h5>
+      <ul>
+        <li>📖 关于 <a href="https://com-caijing.com">彩经网</a> 的更多介绍</li>
+        <li>📁 内容索引说明</li>
+        <li>📬 意见收集</li>
+      </ul>
+    </div>
+
+    <div class="footer-note">
+      <p>页面内容定期整理 · 基于公开资料汇编 · 非官方渠道</p>
+      <p style="margin-top: 0.3rem;">如需进一步了解，可前往 <a href="https://com-caijing.com" class="inline-link">彩经网</a> 浏览完整信息。</p>
+    </div>
+  </div>
+</body>
+</html>
