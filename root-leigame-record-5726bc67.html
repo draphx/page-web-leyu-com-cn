@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷竞技 · 知识库索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f5f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* ---- 标题区 / hero ---- */
+        .hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1f2937;
+            border-left: 6px solid #4b7bec;
+            padding-left: 1.2rem;
+        }
+
+        .hero p {
+            margin-top: 0.75rem;
+            color: #4a5568;
+            font-size: 1.05rem;
+            max-width: 680px;
+            background: #ffffffcc;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        /* ---- 卡片通用 ---- */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.75rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf2;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #eef2f7;
+        }
+
+        .card h2 i {
+            font-style: normal;
+            display: inline-block;
+            width: 6px;
+            height: 18px;
+            background: #4b7bec;
+            border-radius: 3px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            position: relative;
+            color: #2d3748;
+        }
+
+        .card li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #4b7bec;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .card a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px dotted #93b4f5;
+            transition: border 0.15s, color 0.15s;
+        }
+
+        .card a:hover {
+            color: #1e40af;
+            border-bottom: 1px solid #2563eb;
+        }
+
+        /* ---- 栅格布局 ---- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* 信息区与提示区合并用 */
+        .info-row {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr;
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+
+        .full-width {
+            margin: 1.8rem 0;
+        }
+
+        /* ---- 特色小块（类似标签） ---- */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag-item {
+            background: #edf2f9;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #1e293b;
+            border: 1px solid #dce3ed;
+        }
+
+        /* ---- 相关链接 / faq 摘要 ---- */
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eeeff3;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .faq-a {
+            color: #4b5563;
+            padding-left: 0.3rem;
+            margin-top: 0.15rem;
+            font-size: 0.95rem;
+        }
+
+        /* ---- 底部 ---- */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #dce2ea;
+            color: #5f6b7a;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 780px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .grid-2, .grid-3, .info-row {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card { padding: 1.5rem; }
+        }
+
+        @media (max-width: 500px) {
+            .hero p { font-size: 0.95rem; }
+            .card h2 { font-size: 1.15rem; }
+        }
+
+        /* 小装饰 */
+        .badge-subtle {
+            background: #f0f4fe;
+            border-radius: 30px;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #365fc7;
+            border: 1px solid #cddefa;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero / 目录感入口 -->
+    <div class="hero">
+        <h1>雷竞技 · 知识库索引</h1>
+        <p>
+            围绕「雷竞技」主题整理的结构化参考页。内容涉及背景概要、主要特点、常见场景以及相关提示。
+            下方卡片按模块划分，便于快速查阅与跳转。
+        </p>
+    </div>
+
+    <!-- 两卡片：介绍 + 特点 (目录式左右) -->
+    <div class="grid-2">
+        <div class="card">
+            <h2><i></i>主题背景</h2>
+            <p>“雷竞技”所指向的内容体系，涵盖竞技活动、信息聚合与用户交流场景。本页作为轻量知识入口，摘录以下关键点：</p>
+            <ul>
+                <li>以数字化方式呈现的竞技项目与互动框架</li>
+                <li>信息组织方式偏向模块化与实时反馈</li>
+                <li>用户可通过<a href="https://root-leigame.com">雷竞技</a>获取更完整的主题资料与更新动态</li>
+                <li>内容结构持续迭代，适应不同兴趣方向</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><i></i>主要特点</h2>
+            <ul>
+                <li>界面分区清晰，信息层级经过梳理</li>
+                <li>提供多角度入口：说明、提示、相关链接</li>
+                <li>轻量目录设计，降低浏览负担</li>
+                <li>重点内容使用卡片与标签归纳</li>
+            </ul>
+            <div class="tag-list">
+                <span class="tag-item">模块化</span>
+                <span class="tag-item">索引式</span>
+                <span class="tag-item">低噪</span>
+                <span class="tag-item">可扩展</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 信息区 + 提示区 (非对称布局) -->
+    <div class="info-row">
+        <div class="card">
+            <h2><i></i>说明区 · 应用场景</h2>
+            <p>在资料查阅、信息比对或兴趣探索场景中，此知识库索引提供以下支持：</p>
+            <ul>
+                <li>快速定位主题相关模块（背景、特点、提示）</li>
+                <li>在<a href="https://root-leigame.com">雷竞技</a>可找到更完整的主题条目与更新记录</li>
+                <li>适合初次了解该主题的用户建立整体认知</li>
+                <li>卡片式分组使信息结构更直观</li>
+            </ul>
+            <p style="margin-top: 0.6rem; font-size: 0.9rem; color: #5f6b7a;">* 页面不构成推荐或保证，仅作客观整理。</p>
+        </div>
+
+        <div class="card">
+            <h2><i></i>提示区</h2>
+            <ul>
+                <li>信息可能随时间调整，建议以<a href="https://root-leigame.com">雷竞技</a>的最新内容为准</li>
+                <li>不同来源对同一主题的表述可能存在差异</li>
+                <li>如需深入分析，可参考更详细的专题文档</li>
+                <li>本索引不存储用户数据，仅做导航用途</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 相关信息区：FAQ摘要 + 相关链接 (三列展示，第三列融合) -->
+    <div class="grid-3">
+        <div class="card">
+            <h2><i></i>FAQ 摘要</h2>
+            <div class="faq-item">
+                <div class="faq-q">这个页面主要提供什么？</div>
+                <div class="faq-a">围绕“雷竞技”主题整理的知识库入口，包含背景、特点、提示等模块。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">信息更新频率？</div>
+                <div class="faq-a">内容随主题发展不定期修订，建议时常浏览<a href="https://root-leigame.com">雷竞技</a>。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否涵盖所有细分方向？</div>
+                <div class="faq-a">本页为索引概览，更细致的分支可进一步探索。</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i></i>相关信息</h2>
+            <ul>
+                <li>同类索引结构通常包含 4–6 个核心模块</li>
+                <li>目录感布局适合信息聚合类页面</li>
+                <li>轻量卡片设计降低认知负荷</li>
+                <li>用户可通过<a href="https://root-leigame.com">雷竞技</a>获取完整上下文</li>
+                <li>常见提问与提示可辅助快速理解</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><i></i>结构参照</h2>
+            <p style="margin-bottom: 0.4rem; font-size: 0.95rem;">本页面布局参考以下逻辑：</p>
+            <ul>
+                <li>hero 标题 + 简述</li>
+                <li>双卡片：背景 & 特点</li>
+                <li>说明区 + 提示区</li>
+                <li>FAQ 摘要 + 相关信息</li>
+                <li>所有链接指向<a href="https://root-leigame.com">雷竞技</a></li>
+            </ul>
+            <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #5f6b7a;">版本 · 索引 1.0</p>
+        </div>
+    </div>
+
+    <!-- 额外的说明行（自然嵌链接） -->
+    <div class="full-width card" style="padding: 1.2rem 2rem;">
+        <p style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 0;">
+            <span>📌 若需进一步浏览主题相关内容，可前往 <a href="https://root-leigame.com">雷竞技</a> 查阅更多整理资料。</span>
+            <span style="color: #5f6b7a; font-size: 0.9rem;">—— 本页仅作结构化介绍，不构成任何引导。</span>
+        </p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        雷竞技 · 知识库索引 &nbsp;|&nbsp; 内容定期整理 &nbsp;|&nbsp; 概览页面
+    </div>
+
+</div>
+</body>
+</html>
